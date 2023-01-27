@@ -1,8 +1,8 @@
-import '../flutter_list_view.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
+import '../flutter_list_view.dart';
 import 'flutter_list_view_render.dart';
 import 'flutter_list_view_render_data.dart';
 
@@ -218,7 +218,7 @@ class FlutterListViewElement extends RenderObjectElement {
 
   /// [notifyPositionChanged] is used to send ScrollNotification
   void notifyPositionChanged() {
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+    WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
       try {
         var position = parentScrollableState?.position;
 
@@ -237,7 +237,7 @@ class FlutterListViewElement extends RenderObjectElement {
   }
 
   void notifyStickyChanged(int? index) {
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+    WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
       if (widget.controller != null) {
         if (widget.controller!.stickyIndex.value != index) {
           widget.controller!.stickyIndex.value = index;
@@ -249,7 +249,7 @@ class FlutterListViewElement extends RenderObjectElement {
   void notifyPaintItemPositionsCallback(
       double widgetHeight, List<FlutterListViewItemPosition> paintElements) {
     try {
-      WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
         var onPaintItemPositionsCallback =
             widget.controller?.onPaintItemPositionsCallback;
         if (onPaintItemPositionsCallback != null) {
